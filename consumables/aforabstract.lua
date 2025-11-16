@@ -1,0 +1,45 @@
+SMODS.Consumable {
+    key = 'aforabstract',
+    set = 'flashcards',
+    pos = { x = 1, y = 0 },
+    config = { extra = {
+        odds = 4
+    } },
+    loc_txt = {
+        name = 'A for Abstract',
+        text = {
+        [1] = 'Create an {C:attention}Abstract{} Joker,',
+        [2] = '{C:green}1 in 4{} Chance to also Destroy',
+        [3] = 'a random joker held in hand',
+        [4] = '{C:inactive}(Doesnt Require Room){}'
+    }
+    },
+    cost = 3,
+    unlocked = true,
+    discovered = true,
+    hidden = false,
+    can_repeat_soul = false,
+    atlas = 'CustomConsumables',use = function(self, card, area, copier)
+        local used_card = copier or card
+            G.E_MANAGER:add_event(Event({
+                  trigger = 'after',
+                  delay = 0.4,
+                  func = function()
+                      play_sound('timpani')
+                      if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+                          G.GAME.joker_buffer = G.GAME.joker_buffer + 1
+                      local new_joker = SMODS.add_card({ set = 'Joker', key = 'j_abstract' })
+                      if new_joker then
+                      end
+                          G.GAME.joker_buffer = 0
+                      end
+                      used_card:juice_up(0.3, 0.5)
+                      return true
+                  end
+              }))
+              delay(0.6)
+    end,
+    can_use = function(self, card)
+        return true
+    end
+}

@@ -1,0 +1,18 @@
+{
+  "id": "rollscard",
+  "name": "Rollscard",
+  "author": [
+    "Inkyst A."
+  ],
+  "description": "Rollscard (Formerly Inky's Upgrade Jokers) is a mod that contains jokers that may just be direct upgrades to the existing vanilla experience, Art mostly done by me.",
+  "prefix": "inkysupg",
+  "main_file": "main.lua",
+  "version": "0.6.0FCD",
+  "priority": 1,
+  "badge_colour": "56a786",
+  "badge_text_colour": "90e1b8",
+  "dependencies": [
+    "Steamodded (>=1.0.0~BETA-0404a)",
+    "Talisman (>=2.3.1)"
+  ]
+}
